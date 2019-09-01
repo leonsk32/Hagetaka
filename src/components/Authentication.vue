@@ -1,18 +1,18 @@
 <template>
   <b-nav-item-dropdown
     id="auth"
-    v-bind:text="userStatus ? user.email : 'User'"
+    v-bind:text="userStatus ? user.email : 'Login'"
     right
   >
       <b-dropdown-item
         v-if="userStatus"
         @click="doLogout"
-      >ログアウト</b-dropdown-item>
+      >Logout</b-dropdown-item>
       <b-dropdown-item
         v-else
         @click="goToLogin"
       >
-        ログインページへ
+        Go to Login Page
       </b-dropdown-item>
   </b-nav-item-dropdown>
 </template>
