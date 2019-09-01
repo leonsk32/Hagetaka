@@ -3,6 +3,7 @@
     <HagetakaRoundInfo
       v-bind:roundId="$route.params.id"
       v-bind:roundName="round.roundName"
+      v-bind:isAuthor="isAuthor"
     />
     <b-card
       title="投票"
@@ -124,6 +125,10 @@ export default {
 
     isValid () {
       return this.isValidName && this.isValidValue
+    },
+
+    isAuthor () {
+      return this.round.authorId === this.$store.getters.user.uid
     }
   }
 }

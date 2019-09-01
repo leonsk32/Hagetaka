@@ -3,6 +3,7 @@
     <HagetakaRoundInfo
       v-bind:roundId="$route.params.id"
       v-bind:roundName="round.roundName"
+      v-bind:isAuthor=true
     />
     <b-card title="Top Player" style="margin: 20px">
       <div v-if="existsTop">

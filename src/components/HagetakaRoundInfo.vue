@@ -1,6 +1,6 @@
 <template>
   <b-alert variant="info" show align="left" id="info">
-    <div v-if="$store.getters.isSignedIn">
+    <div v-if="isAuthor">
       <router-link v-bind:to="'/hagetaka/rounds/' + roundId">投票</router-link>
       |
       <router-link v-bind:to="'/hagetaka/rounds/' + roundId + '/result'">試合結果</router-link>
@@ -14,7 +14,8 @@
 export default {
   props: {
     roundId: String,
-    roundName: String
+    roundName: String,
+    isAuthor: Boolean
   }
 }
 </script>
