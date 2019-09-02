@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import store from '../store'
-import {firebaseConfig} from './FirebaseConfig.js'
+import { firebaseConfig } from './FirebaseConfig.js'
 
 export default {
   init () {
@@ -75,7 +75,15 @@ export default {
         setRoundId(docRef.id)
       })
   },
-  onHagetakaRoundsCreated (userId, addRound) {
+  deleteHagetakaRound (id) {
+    firebase.firestore().collection('games/hagetaka/rounds')
+      .doc(id).delete().then(function () {
+        console.log('Document successfully deleted!')
+      }).catch(function (error) {
+        console.error('Error removing document: ', error)
+      })
+  },
+  onHagetakaRoundsCreated (userId, addRound, removeRound) {
     firebase
       .firestore()
       .collection('games/hagetaka/rounds')
@@ -84,6 +92,8 @@ export default {
         snapshot.docChanges().forEach(function (change) {
           if (change.type === 'added') {
             addRound(change.doc.data(), change.doc.id)
+          } else if (change.type === 'removed') {
+            removeRound(change.doc.id)
           }
         })
       })

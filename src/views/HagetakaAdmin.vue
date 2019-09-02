@@ -45,6 +45,10 @@
       <b-list-group flush>
         <b-list-group-item v-for="round in rounds">
           <router-link v-bind:to="'/hagetaka/rounds/' + round.id">{{round.roundInfo.roundName}}</router-link>
+          <b-button
+              style="margin-left: 20px"
+              v-on:click="deleteRound(round.id)"
+          >削除</b-button>
         </b-list-group-item>
       </b-list-group>
     </b-card>
@@ -72,7 +76,10 @@ export default {
       (round, id) => this.rounds.push({
         roundInfo: round,
         id: id
-      })
+      }),
+      (id) => {
+        this.rounds = this.rounds.filter(round => round.id !== id)
+      }
     )
   },
 
@@ -90,6 +97,9 @@ export default {
         date: new Date()
       },
       id => this.createdRoundId = id)
+    },
+    deleteRound (id) {
+      Firebase.deleteHagetakaRound(id)
     }
   },
 
