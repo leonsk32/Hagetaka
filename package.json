@@ -6,8 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "cucumber-js --require tests/e2e/conf/cucumber.conf.js --require tests/e2e/step-definitions --format node_modules/cucumber-pretty"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -29,9 +29,15 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
+    "chromedriver": "^76.0.1",
+    "concurrently": "^4.1.2",
+    "cucumber": "^5.1.0",
+    "cucumber-pretty": "^1.5.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",
+    "nightwatch": "^1.2.2",
+    "nightwatch-api": "^2.3.0",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"
