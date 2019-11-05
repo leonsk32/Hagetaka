@@ -1,8 +1,6 @@
 <template>
   <div id="nav">
     <b-navbar toggleable="lg" variant="info">
-      <b-navbar-brand href="#">Hagetaka</b-navbar-brand>
-
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -11,7 +9,7 @@
             <router-link to="/">Home</router-link>
           </b-nav-item>
           <b-nav-item v-if="$store.getters.isSignedIn">
-            <router-link to="/hagetaka-admin">HagetakaAdmin</router-link>
+            <router-link to="/hagetaka-admin">Admin</router-link>
           </b-nav-item>
         </b-navbar-nav>
 
